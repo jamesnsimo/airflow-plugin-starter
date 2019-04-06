@@ -5,7 +5,7 @@ Bash script which take a single word input and scaffolds an Apache Airflow Plugi
 The following example takes input `ibm`.
 
 ```
-$ ./plugin_starter.sh ibm`
+$ ./plugin_starter.sh ibm
 ```
 
 Creates plugin structure like below
