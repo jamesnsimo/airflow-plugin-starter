@@ -38,7 +38,7 @@ class ${PluginName}Plugin(AirflowPlugin):
 
 setup(
     name=\"${PLUGIN_NAME}-plugin\",
-    entry_points = { 'airflow.plugins': ['${plugin} = ${PLUGIN_NAME}-plugin.${plugin}:${PluginName}Plugin'] }
+    entry_points = {\"airflow.plugins\": [\"${plugin} = ${PLUGIN_NAME}-plugin.${plugin}:${PluginName}Plugin\"]}
 )
 
 " > ${plugin}/setup.py
@@ -69,8 +69,8 @@ class ${PluginName}StarterOperator(BaseOperator):
 
     Description about ${PluginName} Starter Operator
 
-    :param ${PLUGIN_NAME}_conn_id:              The ${PLUGIN_NAME} connection id.
-    :type ${PLUGIN_NAME}_conn_id:              string
+    :param ${PLUGIN_NAME}_conn_id:            The ${PLUGIN_NAME} connection id.
+    :type ${PLUGIN_NAME}_conn_id:             string
     :param required_param:              Required parameter description.
     :type required_param:               string
     :param optional_param:              *optional* Optional parameter description.
@@ -110,7 +110,7 @@ class ${PluginName}StarterOperator(BaseOperator):
   # Uncomment line below to initialize plugin with virtualenv, python3, activate and install linter, formatter and airflow
   # cd ${plugin} && virtualenv --python python3 env && source env/bin/activate && pip install pylint black apache-airflow
   # Uncomment line below to subsequently open plugin project with code editor once initialized. code, pycharm, subl etc
-  # code ${plugin}
+  # cd ${plugin} && code .
 }
 
 execute
