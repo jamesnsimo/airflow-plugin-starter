@@ -10,14 +10,14 @@ function error() {
 PLUGIN_NAME=$1
 
 function execute {
-  
     local plugin="${PLUGIN_NAME}_plugin"
     local PluginName="$(tr '[:lower:]' '[:upper:]' <<< ${PLUGIN_NAME:0:1})${PLUGIN_NAME:1}"
     if [ -d "$plugin" ]; then
       error "Folder already exists: $plugin"
     fi
-    echo "Creating new plugin: $plugin"
-    echo "Creating plugin and subfolders"
+    echo $'\n[== Creating new Airflow Plugin ==]'
+    echo "Plugin Name -- ${PluginName}Plugin"
+    echo "Creating in folder -- $plugin"
     mkdir -p ${plugin}/hooks && echo "" > ${plugin}/hooks/__init__.py
     mkdir -p ${plugin}/operators && echo "" > ${plugin}/operators/__init__.py
     echo "from airflow.plugins_manager import AirflowPlugin
@@ -48,15 +48,9 @@ setup(
     
 class ${PluginName}Hook(HttpHook):
   def __init__(self, ${PLUGIN_NAME}_conn_id=\"${PLUGIN_NAME}_default\"):
-      self.access_token = None
       super().__init__(http_conn_id=${PLUGIN_NAME}_conn_id)
 
   def get_conn(self, headers):
-      if self.access_token:
-          headers = {\"Authorization\": \"token {0}\".format(self.access_token)}
-          session = super().get_conn(headers)
-          session.auth = None
-          return session
       return super().get_conn(headers)
 
 " > ${plugin}/hooks/${PLUGIN_NAME}_hook.py
@@ -107,15 +101,16 @@ class ${PluginName}StarterOperator(BaseOperator):
         output = []
         # Do some work on output
         # i.e. imagine ${PluginName}Hook contains method do_work() which takes input required_param
-        # output = ${PLUGIN_NAME}_hook.do_work(self.required_param)
-        return output
+        # self.output = ${PLUGIN_NAME}_hook.do_work(self.required_param)
+        return self.output
   
   " > ${plugin}/operators/${PLUGIN_NAME}_starter_operator.py
 
-  # Optional initialize plugin with virtualenv, activate and install linter, formatter and airflow
-  cd ${plugin} && virtualenv --python python3 env && source env/bin/activate && pip install pylint black apache-airflow
-  # Open plugin project with code editor
-  code ${plugin}
+  # Optional 
+  # Uncomment line below to initialize plugin with virtualenv, python3, activate and install linter, formatter and airflow
+  # cd ${plugin} && virtualenv --python python3 env && source env/bin/activate && pip install pylint black apache-airflow
+  # Uncomment line below to subsequently open plugin project with code editor once initialized. code, pycharm, subl etc
+  # code ${plugin}
 }
 
 execute
