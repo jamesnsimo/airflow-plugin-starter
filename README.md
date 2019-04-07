@@ -6,17 +6,22 @@ Bash script which take a single-word input and scaffolds an Apache Airflow Plugi
 
 1. Clone or download this repo
 1. cd into directory
-  ```
-  $ cd airflow-plugin-starter
-  ```
+
+    ```
+    $ cd airflow-plugin-starter
+    ```
+
 1. Make script executable
-  ```
-  $ cmod u+x plugin_starter.sh
-  ```
+
+    ```
+    $ cmod u+x plugin_starter.sh
+    ```
+
 1. Create Plugin
-  ```
-  $ ./plugin_starter.sh [webapp]
-  ```
+
+    ```
+    $ ./plugin_starter.sh [webapp]
+    ```
 
 ## Example
 
@@ -43,4 +48,13 @@ Creates plugin structure like below
 
 ## Optional
 
-Uncomment line towards bottom starting with `cd ${plugin} ...` to immediately initialize virtualenv (with python3), install pylint, black code formatter and airflow in plugin.
+Uncomment line towards bottom of `plugin_starter.sh` starting with `cd ${plugin} ...` to immediately initialize virtualenv (with python3), install pylint, black code formatter and airflow in plugin.
+
+## Resources
+
+[Airflow Docs >> Plugins](https://airflow.apache.org/plugins.html)
+
+[Google Cloud: Setting Up a Python Development Environment](https://cloud.google.com/python/setup)
+
+[Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
+
