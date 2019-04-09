@@ -6,4 +6,5 @@ steps:
       - '-d'
       - '-r'
       - '.'
+      - '-x ".*\.git$'
       - 'gs://${_GCS_BUCKET}/airflow-plugin-starter/'
