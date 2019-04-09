@@ -5,6 +5,16 @@ Bash script which take a single-word input and scaffolds an Apache Airflow Plugi
 ## Instructions
 
 1. Clone or download this repo
+
+    ```
+    $ git clone https://source.developers.google.com/p/ffn-marketing-prd/r/github_jamesnsimo_airflow-plugin-starter
+    ```
+
+    ```
+    $ gcloud source repos clone github_jamesnsimo_airflow-plugin-starter --project=ffn-marketing-prd
+    ```
+
+
 1. cd into directory
 
     ```
@@ -14,10 +24,10 @@ Bash script which take a single-word input and scaffolds an Apache Airflow Plugi
 1. Make script executable
 
     ```
-    $ cmod u+x plugin_starter.sh
+    $ chmod u+x plugin_starter.sh
     ```
 
-1. Create Plugin
+1. Create plugin (in the following example replace `[webapp]` with __lowercased single-word__ app name such as `confluence`)
 
     ```
     $ ./plugin_starter.sh [webapp]
@@ -25,24 +35,24 @@ Bash script which take a single-word input and scaffolds an Apache Airflow Plugi
 
 ## Example
 
-The following example uses input `ibm`
+The following example uses input `confluence`
 
 ```
-$ ./plugin_starter.sh ibm
+$ ./plugin_starter.sh confluence
 ```
 
 Creates plugin structure like below
 
 ```
 .
-└── ibm_plugin
+└── confluence_plugin
     ├── __init__.py
     ├── hooks
     │   ├── __init__.py
-    │   └── ibm_hook.py
+    │   └── confluence_hook.py
     ├── operators
     │   ├── __init__.py
-    │   └── ibm_starter_operator.py
+    │   └── confluence_starter_operator.py
     └── setup.py
 ```
 
@@ -50,11 +60,16 @@ Creates plugin structure like below
 
 Uncomment line towards bottom of `plugin_starter.sh` starting with `cd ${plugin} ...` to immediately initialize virtualenv (with python3), install pylint, black code formatter and airflow in plugin.
 
+## Next Steps
+
+Use the output folder/files/file structure as general guidelines for creating a new plugin. You will want to rename the operator and operator file, rewrite the import paths once renamed, write the actual operator code, write the hook logic etc. Many useful plugin examples can be found under [Airflow Plugins](https://github.com/airflow-plugins) link found at top of [Resources](#Resources) section below.
+
 ## Resources
 
-[Airflow Docs >> Plugins](https://airflow.apache.org/plugins.html)
+[Airflow Plugins](https://github.com/airflow-plugins)
+> Hooks, Operators, and Utilities for Apache Airflow, maintained with ❤️ by Astronomer, Inc.
 
-[Google Cloud: Setting Up a Python Development Environment](https://cloud.google.com/python/setup)
+[Airflow Docs >> Plugins](https://airflow.apache.org/plugins.html)
 
 [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
 

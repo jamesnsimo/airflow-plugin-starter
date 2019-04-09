@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 function error() {
     echo "Error: $1"
@@ -15,9 +15,9 @@ function execute {
     if [ -d "$plugin" ]; then
       error "Folder already exists: $plugin"
     fi
-    echo $'\n[== Creating new Airflow Plugin ==]'
+    echo $'[== Creating new Airflow Plugin ==]'
     echo "Plugin Name -- ${PluginName}Plugin"
-    echo "Creating in folder -- $plugin"
+    echo "Creating in folder -- ./$plugin"
     mkdir -p ${plugin}/hooks && echo "" > ${plugin}/hooks/__init__.py
     mkdir -p ${plugin}/operators && echo "" > ${plugin}/operators/__init__.py
     echo "from airflow.plugins_manager import AirflowPlugin
@@ -101,8 +101,8 @@ class ${PluginName}StarterOperator(BaseOperator):
         output = []
         # Do some work on output
         # i.e. imagine ${PluginName}Hook contains method do_work() which takes input required_param
-        # self.output = ${PLUGIN_NAME}_hook.do_work(self.required_param)
-        return self.output
+        # output = ${PLUGIN_NAME}_hook.do_work(self.required_param)
+        return output
   
   " > ${plugin}/operators/${PLUGIN_NAME}_starter_operator.py
 
