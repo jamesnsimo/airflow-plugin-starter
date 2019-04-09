@@ -7,5 +7,7 @@ steps:
       - '-r'
       - '-a'
       - 'public-read'
+      - '-x'
+      - '".*\.git$"'
       - '.'
       - 'gs://${_GCS_BUCKET}/airflow-plugin-starter/'
