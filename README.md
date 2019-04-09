@@ -14,7 +14,7 @@ Bash script which take a single-word input and scaffolds an Apache Airflow Plugi
     $ gcloud source repos clone github_jamesnsimo_airflow-plugin-starter --project=ffn-marketing-prd
     ```
 
-    Alternatively download only `plugin_starter.sh` here: `https://storage.cloud.google.com/cloud-repositories-ffn-marketing-prd/airflow-plugin-starter/plugin_starter.sh`
+    Alternatively download contents of `plugin_starter.sh` here: `https://storage.cloud.google.com/cloud-repositories-ffn-marketing-prd/airflow-plugin-starter/plugin_starter.sh`
 
 
 1. cd into directory
