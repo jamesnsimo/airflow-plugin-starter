@@ -105,12 +105,6 @@ class ${PluginName}StarterOperator(BaseOperator):
         return output
   
   " > ${plugin}/operators/${PLUGIN_NAME}_starter_operator.py
-
-  # Optional 
-  # Uncomment line below to initialize plugin with virtualenv, python3, activate and install linter, formatter and airflow
-  # cd ${plugin} && virtualenv --python python3 env && source env/bin/activate && pip install pylint black apache-airflow
-  # Uncomment line below to subsequently open plugin project with code editor once initialized. code, pycharm, subl etc
-  # cd ${plugin} && code .
 }
 
 execute
